@@ -2,31 +2,46 @@
 SELECT * FROM athlete_events;
 
 -- How many games have been held?
-SELECT COUNT(distinct Year) AS total_juegos FROM athlete_events;
+SELECT COUNT(distinct Year) AS total_juegos 
+FROM athlete_events;
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- List all the Olympic Games held so far
-SELECT DISTINCT Games FROM athlete_events; 
+SELECT DISTINCT Games 
+FROM athlete_events; 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Mention the total number of nations that participated in each Olympic Games
-SELECT Games, COUNT(DISTINCT NOC) AS Num_PaísesxJO From athlete_events GROUP BY Games;
+SELECT Games, COUNT(DISTINCT NOC) AS Num_PaísesxJO 
+From athlete_events 
+GROUP BY Games;
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Which year saw the highest and lowest number of countries participating in the Olympics?
-(SELECT Year, COUNT(DISTINCT NOC) AS NúmeroPaísesMAX From athlete_events GROUP BY Year ORDER BY NúmeroPaísesMax DESC LIMIT 1) 
+(SELECT Year, COUNT(DISTINCT NOC) AS NúmeroPaísesMAX 
+From athlete_events 
+GROUP BY Year 
+ORDER BY NúmeroPaísesMax DESC 
+LIMIT 1) 
 UNION
-(SELECT Year, COUNT(DISTINCT NOC) AS NúmeroPaísesMin From athlete_events GROUP BY Year ORDER BY NúmeroPaísesMin ASC LIMIT 1);
+(SELECT Year, COUNT(DISTINCT NOC) AS NúmeroPaísesMin 
+From athlete_events 
+GROUP BY Year 
+ORDER BY NúmeroPaísesMin ASC 
+LIMIT 1);
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Which nation has participated in all the Olympic Games?
-SELECT * FROM athlete_events;
+SELECT * 
+FROM athlete_events;
 
-SELECT NOC, COUNT(DISTINCT YEAR) AS Num_Participaciones From athlete_events GROUP BY NOC
+SELECT NOC, COUNT(DISTINCT YEAR) AS Num_Participaciones
+From athlete_events 
+GROUP BY NOC
 HAVING Num_Participaciones = (SELECT COUNT(DISTINCT Year) FROM athlete_events);
 
 
@@ -68,7 +83,9 @@ WHERE Season = 'Summer');
 -- GET THE TOTAL NUMBER OF SPORTS PLAYED IN EACH GAME
 SELECT * FROM athlete_events;
 
-SELECT Games, COUNT(DISTINCT Sport) AS Total_Juegos FROM athlete_events GROUP BY Games;
+SELECT Games, COUNT(DISTINCT Sport) AS Total_Juegos 
+FROM athlete_events 
+GROUP BY Games;
 
 -- Encuentra la proporción de atletas masculinos y femeninos que participaron en todos los JO--
 SELECT * FROM athlete_events;
